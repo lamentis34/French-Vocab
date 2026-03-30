@@ -23,7 +23,7 @@
     --accent-glow: rgba(124, 111, 247, 0.15);
     --accent-soft: #a59bfa;
     --gold: #f0c674;
-    --green: #4ec9a0;
+    --green: #5EED53;
     --rose: #e06c8a;
     --reveal-bg: rgba(124, 111, 247, 0.08);
     --reveal-border: rgba(124, 111, 247, 0.25);
@@ -380,7 +380,7 @@
   // =====================================================
   // GOOGLE SHEETS CONFIG
   // =====================================================
-  const SHEET_ID = '1Y_6OktxmY4zOVHiZt3CgW6D_d_gflOZa7v12cRcWsIk';
+  const SHEET_ID = '1IEQ9H0lbRsOBbeNqbJkydQRMhhR_F93S';
   const SHEET_NAME = 'Sheet1';
   const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
 
@@ -536,7 +536,7 @@
       exSection.style.display = 'block';
       exFr.textContent = `"${w.exampleFr}"`;
       exEn.textContent = w.exampleEn || '';
-      exEn.style.display = w.exampleEn ? 'block' : 'none';
+      exEn.style.display = 'none'; // hidden until reveal
     } else {
       exSection.style.display = 'none';
     }
@@ -557,14 +557,17 @@
     meaningRevealed = !meaningRevealed;
     const btn = document.getElementById('revealBtn');
     const content = document.getElementById('meaningContent');
+    const exEn = document.getElementById('exampleEn');
     if (meaningRevealed) {
       btn.classList.add('revealed');
       content.classList.add('visible');
       btn.querySelector('.icon').textContent = '↓';
+      if (exEn.textContent) exEn.style.display = 'block';
     } else {
       btn.classList.remove('revealed');
       content.classList.remove('visible');
       btn.querySelector('.icon').textContent = '›';
+      exEn.style.display = 'none';
     }
   }
 
